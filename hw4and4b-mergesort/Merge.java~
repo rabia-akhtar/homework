@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.*;
+
+public class Merge {
+    public ArrayList<Integer> Merge(ArrayList<Integer> a, ArrayList<Integer> b){
+	/*
+	  a and b are ArrayLists that are alread sorted from low to high.
+	  They could be empty
+
+	  build and return a sorted ArrayList using the merge technique we
+	  discussed in class
+	*/
+	ArrayList<Integer> s= new ArrayList<Integer>();
+	for (i=0;i<a.size()+b.size();i++){
+	    if (a.size()==0){
+		s.addAll(b);
+		b.clear();
+	    }
+	    else {
+		if (b.size()==0){
+		    s.addAll(a);
+		    a.clear();
+		}
+		else {
+		    if (b.get(0)>a.get(0){
+			    s.add(b.get(0));
+			    b.remove(0);
+			}
+			else {
+			    s.add(a.get(0));
+			    a.remove(0);
+			}
+		       
+
+		    }
+	    }
+	}
+	}
+    }
+}
