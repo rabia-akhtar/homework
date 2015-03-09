@@ -1,55 +1,35 @@
+//uses Maze base code
 import java.io.*;
 import java.util.*;
 
 public class Knights 
 {
-    private char[][] board;
+    private int[][] board;
     private int maxX;
     private int maxY;
+    private int tries;
 
-    private char path='#';
-    private char wall=' ';
-    private char me='z';
-    private char exit='$';
-    private char visited = '.';
+    private int free = 0;
+    private int me = 5;
+    private int visited = 9;
     private boolean solved = false;
-		
+
     public void delay(int n){
 	try {
 	    Thread.sleep(n);
 	} catch (Exception e) {}
     }
 		
-    public Maze() 
+    public Knights() 
     {
-	maxX=40;
-	maxY=20;
-	board = new char[maxX][maxY];
+	maxX=8;
+	maxY=8;
+	board = new int[maxX][maxY];
 				
-	try {
-						
-	    Scanner sc = new Scanner(new File("maze.dat"));
-	    int j=0;
-	    while (sc.hasNext())
-		{
-		    String line = sc.nextLine();
-		    for (int i=0;i<maxX;i++)
-			{
-			    board[i][j] = line.charAt(i);
-			}
-		    j++;
-		}
-	}
-	catch (Exception e)
-	    {
-	    }
-				
-    }
-		
+    }	
     public String toString()
     {
-	String s = "[2J\n";
-				
+	String s="";				
 	for (int y=0;y<maxY;y++)
 	    {
 		for (int x=0;x<maxX;x++)
@@ -59,36 +39,37 @@ public class Knights
 	return s;
     }
 
-    /*
-      solved - instance variable to indicate we're done
-			
-    */
+    
     public void solve(int x, int y){
-	if (board[x][y]==wall ||
-	    board[x][y]==me ||
-	    board[x][y]==visited ||
-	    solved){
+	if (solved || board[x][y]!=0){
 	    return;
 	}
 
-	if (board[x][y]==exit){
+	if (tries == maxX * maxY){
 	    System.out.println(this);
 	    solved = true;
 	}
 	delay(100);
 	System.out.println(this);
 	board[x][y]=me;
-	solve(x+1,y);
-	solve(x-1,y);
-	solve(x,y+1);
-	solve(x,y-1);
+        solve(x+1,y+2);
+	solve(x-1,y+2);
+	solve(x+1,y-2);
+	solve(x-1,y-2);
+	solve(x+2,y+1);	
+	solve(x-2,y+1);
+	solve(x+2,y-1);
+	solve(x-2,y-1);
+	tries+=1;
+	board[x][y]=9;
 	if (!solved){
-	    board[x][y]=visited;
+	    tries-=1;
+	    board[x][y]=0;
 	}
     }
 		
     public static void main(String[] args){
-	Maze m = new Maze();
+	Knights m = new Knights();
 	System.out.println(m);
 	m.solve(1,1);
 	System.out.println(m);

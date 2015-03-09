@@ -27,6 +27,9 @@ public class Knights
 	board = new int[maxX][maxY];
 				
     }	
+    public int getTries(){
+	return tries;
+    }
     public String toString()
     {
 	String s="";				
@@ -73,7 +76,7 @@ public class Knights
 	System.out.println(m);
 	m.solve(1,1);
 	System.out.println(m);
-		
+	System.out.println(m.getTries());	
     }
 }
 
