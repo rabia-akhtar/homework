@@ -26,7 +26,7 @@ public class LList {
 	s = s + "null";
 	return s;
     }
-    public Object get(int n){
+    public String get(int n){
 	Node result = l.getNext();
 	for (int i = 1; i < n && result.getNext() !=null; i++){
 		result = result.getNext();
