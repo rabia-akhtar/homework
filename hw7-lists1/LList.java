@@ -4,7 +4,7 @@ public class LList {
     public LList (){
 	l= null;
     }
-    public void add(String s){
+    public void add(int s){
 	Node tmp = new Node(s);
 	tmp.setNext(l);
 	l = tmp;
@@ -26,14 +26,14 @@ public class LList {
 	s = s + "null";
 	return s;
     }
-    public String get(int n){
+    public int get(int n){
 	Node result = l.getNext();
 	for (int i = 1; i < n && result.getNext() !=null; i++){
 		result = result.getNext();
 	}
 	return result.getData();
     }
-    public void add (int n, String s){
+    public void add (int n, int s){
 	Node sert =  new Node(s);
 	Node current;
 	int num = 0;
@@ -47,13 +47,13 @@ public class LList {
 	current.setNext(sert);
 		}
     }
-    public String remove (int n){
-	if (n >= len() || n < 0) return "";
+    public int remove (int n){
+	if (n >= len() || n < 0) return 0;
 	Node current = l;
 	for (int i = 0; i <n-1; i++) {
 	    current = current.getNext();
 	}
-	String s = current.getNext().getData();
+	int s = current.getNext().getData();
 	current.setNext(current.getNext().getNext());
 	return s;
    
@@ -61,10 +61,10 @@ public class LList {
     public static void main(String[] args) {
 	LList l = new LList();
 	for (int i=0; i < 10; i++){
-	    l.add(""+i);
+	    l.add(i);
 	}
 	System.out.println(l);
-	l.add(3,"a");
+	l.add(3,5);
 	System.out.println(l);
 	System.out.println(l.get(3));
 	l.remove(3);
