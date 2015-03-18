@@ -47,18 +47,16 @@ public class LList {
 	current.setNext(sert);
 		}
     }
-    public void remove (int index){
+    public String remove (int n){
+	if (n >= len() || n < 0) return "";
 	Node current = l;
-	int num = 0;
-	if (index==0) {
+	for (int i = 0; i <n-1; i++) {
 	    current = current.getNext();
 	}
-	else {
-	for (; current != null; current=current.getNext()){
-	    if (num==index-1) current.setNext(current.getNext().getNext());
-	}
-
-	}
+	String s = current.getNext().getData();
+	current.setNext(current.getNext().getNext());
+	return s;
+   
     }
     public static void main(String[] args) {
 	LList l = new LList();
