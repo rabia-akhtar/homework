@@ -6,24 +6,14 @@ public class myQueue<E> {
     public myQueue() {
 	first.setNext(last);
     }
-
-    public void enqueue(E data) {	
-	if (empty()) {
-	    first.setData(data);
-	    last = first;
-	}
-	else {
-	Node tmp = new Node(data);
-	last.setNext(tmp);
-	last = last.getNext();
-	}
+    public void enqueue(Node n) {
+	last.setNext(n);
+	last = n;
     }
-
-    public E dequeue() {
-	// remove and return the head/front item from the stack
-     
-	E tmp = first.getData();
-	first = first.getNext();
+   
+   public Node dequeue() {
+	Node tmp = first.getNext();
+	first.setNext(first.getNext().getNext());
 	return tmp;
     }
 
@@ -45,15 +35,5 @@ public class myQueue<E> {
 	return s;
     }
   
-    public static void main(String[] args) {
-	myQueue<Integer> q = new myQueue<Integer>();
-	q.enqueue(5);
-	q.enqueue(7);
-	q.enqueue(9);
-	System.out.println(q);
-	System.out.println(q.dequeue());
-	System.out.println(q);
-	System.out.println(q.head());
-    }
     
 }

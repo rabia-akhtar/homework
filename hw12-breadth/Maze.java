@@ -12,14 +12,13 @@ public class Maze
     private char me='z';
     private char exit='$';
     private char visited = '.';
+    private myQueue Frontier;
     private boolean solved = false;
-    
     public void delay(int n){
 	try {
 	    Thread.sleep(n);
 	} catch (Exception e) {}
     }
-    
     public Maze() 
     {
 	maxX=40;
@@ -60,40 +59,39 @@ public class Maze
 	return s;
     }
     
-    /*
-      solved - instance variable to indicate we're done
-      
+
+
+    /* my partner is sarah
     */
-    public void solve(int x, int y){
-	Frontier.enqueue(board[x][y]);
+    public void solve(int x, int y) {
+    Frontier.enqueue(board[x][y]);
 
-	while(!Frontier.empty()) {
-	    current = Frontier.dequeue();
+    while(!Frontier.empty()) {
+	Node current = Frontier.dequeue();
 
-	    if (current.getData() == wall ||
-		current.getData() == me ||
-		current.getData() == visited ||
-		solved) {
-		return;
-	    }
-	    
-	    if (current.getData() == exit){
-		System.out.println(this);
-		solved = true;
-	    }
-	    
-	    Frontier.enqueue(board[current.getX()+1][current.getY()]);
-	    Frontier.enqueue(board[current.getX()-1][current.getY()]);
-	    Frontier.enqueue(board[current.getX()][current.getY()+1]);
-	    Frontier.enqueue(board[current.getX()][current.getY()-1]);
-
-	    if (!solved){
-		current.setData(visited);
-	    }
-	    
+	if (current.getData() == wall ||
+	    current.getData() == me ||
+	    current.getData() == visited ||
+	    solved) {
+	    return;
 	}
+	    
+	if (current.getData() == exit){
+	    System.out.println(this);
+	    solved = true;
+	}
+	Frontier.enqueue(board[current.getX()+1][current.getY()]);
+	Frontier.enqueue(board[current.getX()-1][current.getY()]);
+	Frontier.enqueue(board[current.getX()][current.getY()+1]);
+	Frontier.enqueue(board[current.getX()][current.getY()-1]);
 
-	
+
+	if (!solved){
+	    current.setData(visited);
+	}
+	    
+		
+    }
     }
     
     public static void main(String[] args){
