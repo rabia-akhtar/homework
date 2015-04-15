@@ -1,19 +1,30 @@
 import java.util.*;
 
 public class Frontier {
-		public LinkedList<Node> l = new LinkedList<Node>();
+    public LinkedList<Node> l = new LinkedList<Node>();
 
-		public void add(Node n){
-				l.add(n);
+    public void add(Node n){
+	l.add(n);
+    }
+
+    public Node remove() {
+	Node thing;
+	int p;
+	for (Node tmp = l; tmp!=null; tmp=tmp.getNext()) {
+	    if (tmp.getPrio()>p)
+		{
+		    thing = tmp;
+		    p = tmp.getPrio();
+		    tmp=tmp.getNext();
 		}
 
-		public Node remove() {
-				return l.remove(0);
-		}
+	}	
+	return thing;
+    }
 
-		public boolean isEmpty(){
-				return l.isEmpty();
-		}
+    public boolean isEmpty(){
+	return l.isEmpty();
+    }
 }
 
 
