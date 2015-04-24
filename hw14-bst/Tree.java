@@ -1,14 +1,16 @@
 public class Tree {
-    private Node root;
+    private Node r;
 
     public Tree (){
-	root = null;
+	r = null;
     }
 
     public Tree (Node n) {
-	root = n;
+	r = n;
     }
+    public void insert (Node t, int i){
 
+    }
 
     public Node search (Node t, int i) {
 	while (t!= null) {
@@ -19,11 +21,9 @@ public class Tree {
 		else return t;
 
 	    }
-	    return null;
 	}
-
-	public void insert (Node t, int i){
-
+	    return null;
+	
     }
 
 
