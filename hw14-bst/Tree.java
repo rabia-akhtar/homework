@@ -97,9 +97,19 @@ public class Tree {
 	    t2.setLeft(n);
     }
 
+    public string Traverse (node t) {
+	if (t==null) return " ";
+	else {
+	    s += Traverse(t.getLeft());
+	    s += t;
+	    s += Traverse(t.getRight());
+	    return s;
+	}
+    }
+
     public String toString () {
 
-
+	return "";
     }
 
     public static void main (String[] args){
