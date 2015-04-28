@@ -97,7 +97,8 @@ public class Tree {
 	    t2.setLeft(n);
     }
 
-    public string Traverse (node t) {
+    public string Traverse (Node t) {
+	String s;
 	if (t==null) return " ";
 	else {
 	    s += Traverse(t.getLeft());
@@ -123,5 +124,6 @@ public class Tree {
 	t.insert(30);
 	System.out.println(t);
 	System.out.println(t.search(30));
+	System.out.println(Traverse(t.getData()));
     }
 }
