@@ -102,7 +102,7 @@ public class Tree {
 	if (t==null) return " ";
 	else {
 	    s += Traverse(t.getLeft());
-	    s += t;
+	    s += t.getData();
 	    s += Traverse(t.getRight());
 	    return s;
 	}
