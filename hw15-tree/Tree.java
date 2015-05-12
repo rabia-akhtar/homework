@@ -112,8 +112,20 @@ public class Tree {
 
 	return "";
     }
+    public int maxValue(Node t){
+     // finds the largest value in the tree
+    }
+    public int height(Node t) {
+     // returns the height (longest root to leaf path)
+    }
+    public void splitDupes(Node t){
+     // if a node has the same value as its child, insert a new node between the two with value one less than the nodes value
+    }
+    public int diameter(Node t) {
+     // length of the longest leaf to leaf path
+    }
 
-    public static void main (String[] args){
+ public static void main (String[] args){
 	
 	Tree t = new Tree();
 	Random r = new Random();
